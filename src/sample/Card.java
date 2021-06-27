@@ -11,11 +11,6 @@ public class Card {
   private String hint;
   private Image image;
 
-  public Card(String question, String answer) {
-    this.question = question;
-    this.answer = answer;
-  }
-
   public Card(String question, String answer, String hint) {
     this.question = question;
     this.answer = answer;
@@ -31,7 +26,15 @@ public class Card {
 
   @Override
   public String toString() {
-    return String.format("Question: %s, Answer: %s, Hint: %s, Image: %s", getQuestion(), getAnswer(), getHint(), getImage());
+    String returnValue;
+    //    return String.format("Question: %s, Answer: %s, Hint: %s, Image: %s", getQuestion(), getAnswer(), getHint(), getImage().getUrl());
+    if (image == null) {
+      returnValue = String.format("Question: %s, Answer: %s, Hint: %s", getQuestion(), getAnswer(), getHint());
+    } else {
+      returnValue = String.format("Question: %s, Answer: %s, Hint: %s, Image: %s", getQuestion(), getAnswer(), getHint(), getImage().getUrl());
+    }
+
+    return returnValue;
   }
 
   public String getQuestion() {
