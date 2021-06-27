@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -32,6 +34,11 @@ public class Controller {
   }
 
   public void createCardCommitChange(ActionEvent actionEvent) {
+    String question = createQuestionField.getText();
+    String answer = createAnswerField.getText();
+    System.out.println("Question: " + question);
+    System.out.println("Answer:" + answer);
+    System.out.println("");
   }
 
   public void saveCardsToDisk(ActionEvent actionEvent) {

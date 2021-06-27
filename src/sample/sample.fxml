@@ -12,93 +12,67 @@
 <?import javafx.scene.text.Text?>
 
 <!--suppress JavaFxDefaultTag -->
-<TabPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0"
-         prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="sample.Controller">
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <tabs>
         <Tab text="Create">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
-                        <ListView fx:id="listQuestions" layoutX="14.0" layoutY="14.0" prefHeight="594.0" prefWidth="366.0" AnchorPane.bottomAnchor="50.0"
-                                  AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0"/>
-                        <Button layoutX="13.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="New Card"
-                                AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
+                        <ListView fx:id="listQuestions" layoutX="14.0" layoutY="14.0" prefHeight="594.0" prefWidth="366.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
+                        <Button layoutX="13.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="New Card" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Button>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Cards:" AnchorPane.leftAnchor="14.0"
-                              AnchorPane.topAnchor="14.0">
+                        <Text fill="WHITE" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Cards:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <TextArea fx:id="createQuestionField" layoutX="390.0" layoutY="42.0" prefHeight="151.0" prefWidth="876.0" promptText="Insert Question"
-                                  AnchorPane.bottomAnchor="495.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="40.0"/>
-                        <Text fill="WHITE" layoutX="393.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:"
-                              AnchorPane.bottomAnchor="644.734375" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="792.734375"
-                              AnchorPane.topAnchor="14.0">
+                        <TextArea fx:id="createQuestionField" layoutX="390.0" layoutY="42.0" prefHeight="151.0" prefWidth="876.0" promptText="Insert Question" AnchorPane.bottomAnchor="495.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="40.0" />
+                        <Text fill="WHITE" layoutX="393.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:" AnchorPane.bottomAnchor="644.734375" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="792.734375" AnchorPane.topAnchor="14.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="390.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer:"
-                              AnchorPane.bottomAnchor="466.9375" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="808.09765625"
-                              AnchorPane.topAnchor="192.0">
+                        <Text fill="WHITE" layoutX="390.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer:" AnchorPane.bottomAnchor="466.9375" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="808.09765625" AnchorPane.topAnchor="192.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <TextArea fx:id="createAnswerField" layoutX="390.0" layoutY="217.0" prefHeight="154.0" prefWidth="876.0" promptText="Insert Answer"
-                                  AnchorPane.bottomAnchor="316.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="220.0"/>
-                        <Text fill="WHITE" layoutX="390.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hint:" AnchorPane.bottomAnchor="290.0"
-                              AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="842.0" AnchorPane.topAnchor="370.0">
+                        <TextArea fx:id="createAnswerField" layoutX="390.0" layoutY="217.0" prefHeight="154.0" prefWidth="876.0" promptText="Insert Answer" AnchorPane.bottomAnchor="316.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="220.0" />
+                        <Text fill="WHITE" layoutX="390.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hint:" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="842.0" AnchorPane.topAnchor="370.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <TextArea fx:id="createTextAreaHint" layoutX="390.0" layoutY="399.0" prefHeight="200.0" prefWidth="396.0" AnchorPane.bottomAnchor="91.0"
-                                  AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="400.0"/>
-                        <Text fill="WHITE" layoutX="797.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" AnchorPane.bottomAnchor="290.0"
-                              AnchorPane.leftAnchor="800.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="370.0">
+                        <TextArea fx:id="createTextAreaHint" layoutX="390.0" layoutY="399.0" prefHeight="200.0" prefWidth="396.0" promptText="(Optional Hint)" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="400.0" />
+                        <Text fill="WHITE" layoutX="797.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="800.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="370.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <Button layoutX="797.0" layoutY="399.0" mnemonicParsing="false" onAction="#createAddImageToQuestion" prefHeight="197.0"
-                                prefWidth="464.0" text="Add Image" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="17.0"
-                                AnchorPane.topAnchor="400.0">
+                        <Button layoutX="797.0" layoutY="399.0" mnemonicParsing="false" onAction="#createAddImageToQuestion" prefHeight="197.0" prefWidth="464.0" text="Add Image (Optional)" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="400.0">
                             <font>
-                                <Font size="30.0"/>
+                                <Font size="30.0" />
                             </font>
                         </Button>
-                        <ImageView fx:id="createImagePreview" fitHeight="198.0" fitWidth="469.0" layoutX="795.0" layoutY="400.0" pickOnBounds="true"
-                                   preserveRatio="true" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="16.0"
-                                   AnchorPane.topAnchor="400.0"/>
-                        <Button layoutX="795.0" layoutY="610.0" mnemonicParsing="false" onAction="#deleteSelectedCardInListView" prefHeight="61.0"
-                                prefWidth="134.0" text="Delete Selected Card" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="547.0" layoutY="610.0" mnemonicParsing="false" onAction="#createEditSelectedCard" prefHeight="65.0" prefWidth="119.0"
-                                text="Edit Card Selected" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="547.0" AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="668.0" layoutY="610.0" mnemonicParsing="false" onAction="#createDeleteCurrentCard" text="Delete Current Card"
-                                AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="390.0" layoutY="605.0" mnemonicParsing="false" onAction="#createCardCommitChange" prefHeight="63.0" prefWidth="157.0"
-                                text="Commit Current Changes" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="733.0"
-                                AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="1189.0" layoutY="628.0" mnemonicParsing="false" onAction="#saveCardsToDisk" text="Save Flash Cards to Disk"
-                                AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="944.0" layoutY="628.0" mnemonicParsing="false" onAction="#loadCardsFromDisk" prefHeight="63.0" prefWidth="169.0"
-                                text="Load Flash Cards Fom Disk" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="944.0" AnchorPane.rightAnchor="167.0"
-                                AnchorPane.topAnchor="610.0"/>
-                        <Button layoutX="257.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Load Card"
-                                AnchorPane.bottomAnchor="14.0">
+                        <ImageView fx:id="createImagePreview" fitHeight="198.0" fitWidth="469.0" layoutX="795.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="400.0" />
+                        <Button layoutX="795.0" layoutY="610.0" mnemonicParsing="false" onAction="#deleteSelectedCardInListView" prefHeight="61.0" prefWidth="134.0" text="Delete Selected Card" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="547.0" layoutY="610.0" mnemonicParsing="false" onAction="#createEditSelectedCard" prefHeight="65.0" prefWidth="119.0" text="Edit Card Selected" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="547.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="668.0" layoutY="610.0" mnemonicParsing="false" onAction="#createDeleteCurrentCard" text="Delete Current Card" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="390.0" layoutY="605.0" mnemonicParsing="false" onAction="#createCardCommitChange" prefHeight="63.0" prefWidth="157.0" text="Commit Current Changes" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="733.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="1189.0" layoutY="628.0" mnemonicParsing="false" onAction="#saveCardsToDisk" text="Save Flash Cards to Disk" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="944.0" layoutY="628.0" mnemonicParsing="false" onAction="#loadCardsFromDisk" prefHeight="63.0" prefWidth="169.0" text="Load Flash Cards Fom Disk" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="944.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="257.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Load Card" AnchorPane.bottomAnchor="14.0">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Button>
-                        <Button layoutX="136.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Clear Cards"
-                                AnchorPane.bottomAnchor="14.0">
+                        <Button layoutX="136.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Clear Cards" AnchorPane.bottomAnchor="14.0">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Button>
                     </children>
@@ -109,56 +83,47 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
-                        <Text fx:id="reviewQuestionText" fill="WHITE" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:"
-                              AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                        <Text fx:id="reviewQuestionText" fill="WHITE" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <Text fx:id="reviewTextHint" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="638.625"
-                              AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1234.234375" AnchorPane.topAnchor="29.53125">
+                        <Text fx:id="reviewTextHint" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="638.625" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1234.234375" AnchorPane.topAnchor="29.53125">
                             <font>
-                                <Font size="16.0"/>
+                                <Font size="16.0" />
                             </font>
                         </Text>
-                        <ImageView fx:id="reviewImageView" fitHeight="630.0" fitWidth="475.0" layoutX="791.0" layoutY="48.0" pickOnBounds="true"
-                                   preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="14.0"
-                                   AnchorPane.topAnchor="40.0"/>
-                        <TextArea layoutX="14.0" layoutY="105.0" prefHeight="260.0" prefWidth="536.0" promptText="Answer" AnchorPane.bottomAnchor="322.0"
-                                  AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="105.0"/>
+                        <ImageView fx:id="reviewImageView" fitHeight="630.0" fitWidth="475.0" layoutX="791.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="40.0" />
+                        <TextArea layoutX="14.0" layoutY="105.0" prefHeight="260.0" prefWidth="536.0" promptText="Answer" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="105.0" />
                         <Text fill="WHITE" layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer:">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Text>
-                        <ListView fx:id="listQuestions" layoutX="14.0" layoutY="370.0" prefHeight="303.0" prefWidth="537.0" AnchorPane.bottomAnchor="14.0"
-                                  AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="370.0"/>
-                        <VBox alignment="CENTER" layoutX="554.0" layoutY="370.0" prefHeight="302.0" prefWidth="226.0" spacing="50.0"
-                              AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="370.0">
+                        <ListView fx:id="listQuestions" layoutX="14.0" layoutY="370.0" prefHeight="303.0" prefWidth="537.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="370.0" />
+                        <VBox alignment="CENTER" layoutX="554.0" layoutY="370.0" prefHeight="302.0" prefWidth="226.0" spacing="50.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="370.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#reviewShuffleReviewCards" prefHeight="27.0" prefWidth="381.0" text="Shuffle"/>
-                                <Button mnemonicParsing="false" onAction="#reviewDisplaySelectedCard" prefHeight="27.0" prefWidth="330.0"
-                                        text="Display Selected"/>
-                                <Button mnemonicParsing="false" onAction="#reviewPreviousCard" prefHeight="27.0" prefWidth="332.0" text="Back"/>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#reviewNextCard" prefHeight="27.0" prefWidth="345.0" text="Next"/>
+                                <Button mnemonicParsing="false" onAction="#reviewShuffleReviewCards" prefHeight="27.0" prefWidth="381.0" text="Shuffle" />
+                                <Button mnemonicParsing="false" onAction="#reviewDisplaySelectedCard" prefHeight="27.0" prefWidth="330.0" text="Display Selected" />
+                                <Button mnemonicParsing="false" onAction="#reviewPreviousCard" prefHeight="27.0" prefWidth="332.0" text="Back" />
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#reviewNextCard" prefHeight="27.0" prefWidth="345.0" text="Next" />
                             </children>
                         </VBox>
-                        <VBox alignment="CENTER" layoutX="555.0" layoutY="105.0" prefHeight="259.0" prefWidth="228.0" spacing="10.0"
-                              AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="105.0">
+                        <VBox alignment="CENTER" layoutX="555.0" layoutY="105.0" prefHeight="259.0" prefWidth="228.0" spacing="10.0" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="105.0">
                             <children>
                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
                                     <font>
-                                        <Font size="50.0"/>
+                                        <Font size="50.0" />
                                     </font>
                                 </Text>
                                 <Text fx:id="textScoreFraction" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0/0">
                                     <font>
-                                        <Font size="50.0"/>
+                                        <Font size="50.0" />
                                     </font>
                                 </Text>
                                 <Text fx:id="textScorePercent" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0%">
                                     <font>
-                                        <Font size="50.0"/>
+                                        <Font size="50.0" />
                                     </font>
                                 </Text>
                             </children>
