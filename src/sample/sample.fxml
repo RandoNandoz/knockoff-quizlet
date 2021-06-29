@@ -54,23 +54,21 @@
                             </font>
                         </Text>
                   <ImageView fx:id="createImagePreview" fitHeight="193.0" fitWidth="462.0" layoutX="800.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="addImageButton" layoutX="797.0" layoutY="399.0" mnemonicParsing="false" onAction="#createAddImageToQuestion" onMouseClicked="#selectImageFromPath" prefHeight="197.0" prefWidth="464.0" text="Add Image (Optional)" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="400.0">
+                        <Button fx:id="addImageButton" layoutX="797.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#selectImageFromPath" prefHeight="197.0" prefWidth="464.0" text="Add Image (Optional)" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="795.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="400.0">
                             <font>
                                 <Font size="30.0" />
                             </font>
                         </Button>
                         <Button layoutX="795.0" layoutY="610.0" mnemonicParsing="false" onAction="#deleteSelectedCardInListView" prefHeight="61.0" prefWidth="134.0" text="Delete Selected Card" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0" />
-                        <Button layoutX="547.0" layoutY="610.0" mnemonicParsing="false" onAction="#createEditSelectedCard" prefHeight="65.0" prefWidth="119.0" text="Edit Card Selected" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="547.0" AnchorPane.topAnchor="610.0" />
-                        <Button layoutX="668.0" layoutY="610.0" mnemonicParsing="false" onAction="#createDeleteCurrentCard" text="Delete Current Card" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="610.0" />
-                        <Button layoutX="390.0" layoutY="605.0" mnemonicParsing="false" onAction="#createCardCommitChange" prefHeight="63.0" prefWidth="157.0" text="Commit Current Changes" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="733.0" AnchorPane.topAnchor="610.0" />
+                        <Button layoutX="390.0" layoutY="605.0" mnemonicParsing="false" onAction="#createCardCommitChange" prefHeight="67.0" prefWidth="392.0" text="Commit Current Changes" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="498.0" AnchorPane.topAnchor="610.0" />
                         <Button layoutX="1189.0" layoutY="628.0" mnemonicParsing="false" onAction="#saveCardsToDisk" text="Save Flash Cards to Disk" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="610.0" />
                         <Button layoutX="944.0" layoutY="628.0" mnemonicParsing="false" onAction="#loadCardsFromDisk" prefHeight="63.0" prefWidth="169.0" text="Load Flash Cards Fom Disk" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="944.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="610.0" />
-                        <Button layoutX="257.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Load Card" AnchorPane.bottomAnchor="14.0">
+                        <Button layoutX="257.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#loadCardFromSelection" prefHeight="27.0" prefWidth="123.0" text="Load Card" AnchorPane.bottomAnchor="14.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Button>
-                        <Button layoutX="136.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Clear Cards" AnchorPane.bottomAnchor="14.0">
+                        <Button layoutX="136.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#clearListQuestions" prefHeight="27.0" prefWidth="123.0" text="Clear Cards" AnchorPane.bottomAnchor="14.0">
                             <font>
                                 <Font size="14.0" />
                             </font>

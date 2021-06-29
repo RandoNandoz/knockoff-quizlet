@@ -1,23 +1,18 @@
 package sample;
 
-import java.io.File;
-import java.util.Optional;
-import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Controller {
-
-  // Yes I know this is a superclass with a ton of methods
-  // that really should be in other classes but dont @ me.
   public ListView<Card> listQuestions;
   public TextArea createQuestionField;
   public TextArea createAnswerField;
@@ -32,16 +27,11 @@ public class Controller {
   public Button addImageButton;
   private Image image;
 
-  public void createAddImageToQuestion(ActionEvent actionEvent) {
-  }
-
   public void deleteSelectedCardInListView(ActionEvent actionEvent) {
-  }
-
-  public void createEditSelectedCard(ActionEvent actionEvent) {
-  }
-
-  public void createDeleteCurrentCard(ActionEvent actionEvent) {
+    // Get the index of the selected item.
+    int index = listQuestions.getSelectionModel().getSelectedIndex();
+    // Delete the index position.
+    listQuestions.getItems().remove(index, index + 1);
   }
 
   public void createCardCommitChange(ActionEvent actionEvent) {
@@ -64,7 +54,7 @@ public class Controller {
       }
       // If image isn't null, we assume it has *something*; so create a card with an image
       else {
-          card = new Card(question, answer, hint, image);
+        card = new Card(question, answer, hint, image);
       }
 
       // Finally, add the card to the list of questions.
@@ -75,6 +65,7 @@ public class Controller {
       createAnswerField.clear();
       createTextAreaHint.clear();
       createImagePreview.setImage(null);
+      image = null;
     }
   }
 
@@ -97,13 +88,48 @@ public class Controller {
   }
 
   public void selectImageFromPath(MouseEvent mouseEvent) {
+    // Create the FileChooser object.
     FileChooser fileChooser = new FileChooser();
+    // Set the title of the FileChooser to "Select Image"
     fileChooser.setTitle("Select Image");
+    // Since JavaFX only works with bitmap images, gifs, jpegs, and pngs, we allow the user to pick those files only.
+    // Also allow all files, just in case if the operating system we're running on doesn't use extensions to dictate the file type.
+    // A file with no extension could also be a JPG, or a PNG.
     fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.bmp", "*.gif", "*.jpeg", "*.jpg", "*.png"),
         new FileChooser.ExtensionFilter("All Files", "*.*"));
+    // Get the URI of the image.
     String imagePath = fileChooser.showOpenDialog(new Stage()).toURI().toString();
+    // Set the global image to the path of the image.
     image = new Image(imagePath);
+    // Set the preview to the image URI.
     createImagePreview.setImage(image);
-    addImageButton.setVisible(false);
+    // And make the button invisible (but still clickable!)
+    addImageButton.setOpacity(0);
+  }
+
+  public void clearListQuestions(MouseEvent mouseEvent) {
+    // Clear the list.
+    listQuestions.getItems().clear();
+  }
+
+  public void loadCardFromSelection(MouseEvent mouseEvent) {
+    // Get the selected card.
+    Card card = listQuestions.getSelectionModel().getSelectedItem();
+    // If it isn't selected, then tell the user to select one.
+    if (card == null) {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Please select a card.");
+      alert.setContentText("Select a card from the list of cards that you want to display.");
+      alert.showAndWait();
+    } else {
+      // If it is selected, set the fields to the fields from the Card object above.
+      createQuestionField.setText(card.getQuestion());
+      createAnswerField.setText(card.getAnswer());
+      createTextAreaHint.setText(card.getHint());
+      createImagePreview.setImage(card.getImage());
+    }
+  }
+
+  public void clearFields(ActionEvent actionEvent) {
   }
 }
