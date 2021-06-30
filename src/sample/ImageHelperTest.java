@@ -8,15 +8,15 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ImageHelperTest {
+  // Again, we need to test on the JavaFX thread so we need this rule.
+  @Rule public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
   // Create two image vars, both should be different.
   Image image1;
   Image image2;
-
-  // Again, we need to test on the JavaFX thread so we need this rule.
-  @Rule public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
 
   @Before
   public void setUp() {

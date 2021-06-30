@@ -33,9 +33,10 @@ public class IOHelper {
     Stream<String> lines = bufferReader.lines();
     // Iterate through the lines and for each line in the lines, we call Card.toCard() to convert the line to a Card object.
     // Then we append to the card ArrayList.
-//    lines.forEach(System.out::println);
+    //    lines.forEach(System.out::println);
     lines.forEach((line) -> {
-      cards.add(Card.toCard(line));});
+      cards.add(Card.toCard(line));
+    });
 
     // And then we return that list of cards.
     return cards;

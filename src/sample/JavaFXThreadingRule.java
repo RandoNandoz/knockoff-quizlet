@@ -1,17 +1,17 @@
 package sample;
 
 /*
-  *
-  *  https://andrewtill.blogspot.com/2012/10/junit-rule-for-javafx-controller-testing.html From here. Fix required to run tests on the Image class for JavaFX.
-  *
+ *
+ *  https://andrewtill.blogspot.com/2012/10/junit-rule-for-javafx-controller-testing.html From here. Fix required to run tests on the Image class for JavaFX.
+ *
  */
+
 import java.util.concurrent.CountDownLatch;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-
 import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -27,7 +27,6 @@ import org.junit.runners.model.Statement;
  * </pre>
  *
  * @author Andy Till
- *
  */
 public class JavaFXThreadingRule implements TestRule {
 
@@ -45,17 +44,16 @@ public class JavaFXThreadingRule implements TestRule {
   private static class OnJFXThreadStatement extends Statement {
 
     private final Statement statement;
+    private Throwable rethrownException = null;
 
     public OnJFXThreadStatement(Statement aStatement) {
       statement = aStatement;
     }
 
-    private Throwable rethrownException = null;
-
     @Override
     public void evaluate() throws Throwable {
 
-      if(!jfxIsSetup) {
+      if (!jfxIsSetup) {
         setupJavaFX();
 
         jfxIsSetup = true;
@@ -72,13 +70,14 @@ public class JavaFXThreadingRule implements TestRule {
             rethrownException = e;
           }
           countDownLatch.countDown();
-        }});
+        }
+      });
 
       countDownLatch.await();
 
       // if an exception was thrown by the statement during evaluation,
       // then re-throw it to fail the test
-      if(rethrownException != null) {
+      if (rethrownException != null) {
         throw rethrownException;
       }
     }

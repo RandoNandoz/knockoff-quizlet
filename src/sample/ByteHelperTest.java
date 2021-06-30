@@ -24,8 +24,6 @@ public class ByteHelperTest {
     // Test toBytesFromString function.
 
     // Assert that the random bytes of the array is equal to the random bytes called from the toBytesFromString on the randomBytes, as a string, using regex to strip.
-    assertEquals(
-        Arrays.hashCode(randomBytes), Arrays.hashCode(
-            ByteHelper.toBytesFromString(DataHelper.normalizeString(Arrays.toString(randomBytes)))));
+    assertEquals(Arrays.hashCode(randomBytes), Arrays.hashCode(ByteHelper.toBytesFromString(DataHelper.normalizeString(Arrays.toString(randomBytes)))));
   }
 }
