@@ -1,14 +1,8 @@
-package sample;
-
 /*
  *
  *  https://andrewtill.blogspot.com/2012/10/junit-rule-for-javafx-controller-testing.html From here. Fix required to run tests on the Image class for JavaFX.
  *
  */
-
-import java.util.concurrent.CountDownLatch;
-
-import javax.swing.*;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -16,6 +10,9 @@ import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
+
+import javax.swing.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * A JUnit {@link Rule} for running tests on the JavaFX thread and performing
@@ -61,16 +58,13 @@ public class JavaFXThreadingRule implements TestRule {
 
       final CountDownLatch countDownLatch = new CountDownLatch(1);
 
-      Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-          try {
-            statement.evaluate();
-          } catch (Throwable e) {
-            rethrownException = e;
-          }
-          countDownLatch.countDown();
+      Platform.runLater(() -> {
+        try {
+          statement.evaluate();
+        } catch (Throwable e) {
+          rethrownException = e;
         }
+        countDownLatch.countDown();
       });
 
       countDownLatch.await();
@@ -88,13 +82,11 @@ public class JavaFXThreadingRule implements TestRule {
 
       final CountDownLatch latch = new CountDownLatch(1);
 
-      SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-          // initializes JavaFX environment
-          new JFXPanel();
+      SwingUtilities.invokeLater(() -> {
+        // initializes JavaFX environment
+        new JFXPanel();
 
-          latch.countDown();
-        }
+        latch.countDown();
       });
 
       System.out.println("javafx initialising...");

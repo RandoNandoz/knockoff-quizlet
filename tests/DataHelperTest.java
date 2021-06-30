@@ -1,7 +1,6 @@
-package sample;
-
 import org.junit.Before;
 import org.junit.Test;
+import sample.DataHelper;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -20,7 +19,7 @@ public class DataHelperTest {
     // Test if the regex works.
     assertEquals(DataHelper.normalizeString(string), string.replaceAll("\\[", "").replaceAll("]", "").replaceAll(",", "|").replaceAll(" ", ""));
 
-    // This SHOULDNT work as one has been normalized and the other hasnt.
+    // This SHOULDN'T work as one has been normalized and the other hasn't.
     assertNotEquals(DataHelper.normalizeString(string), string);
   }
 }

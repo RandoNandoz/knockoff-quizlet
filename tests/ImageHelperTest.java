@@ -1,12 +1,11 @@
-package sample;
-
-import java.io.File;
-import java.io.IOException;
-
 import javafx.scene.image.Image;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import sample.ImageHelper;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -23,7 +22,7 @@ public class ImageHelperTest {
     // Set up our first Image.
 
     // Get the file from the path.
-    File file = new File("Penguins_collage.png");
+    File file = new File("resources/Penguins_collage.png");
 
     // The get URI of the file.
     var stringURI = file.toURI().toString();
@@ -32,7 +31,7 @@ public class ImageHelperTest {
     image1 = new Image(stringURI);
 
     // Basically the same thing, but with another DIFFERENT image.
-    File file2 = new File("Zürich_view_Quaibrücke_20200702.jpg");
+    @SuppressWarnings("SpellCheckingInspection") File file2 = new File("resources/Zürich_view_Quaibrücke_20200702.jpg");
     var stringURI2 = file2.toURI().toString();
     image2 = new Image(stringURI2);
   }

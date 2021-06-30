@@ -1,16 +1,16 @@
-package sample;
+import org.junit.Before;
+import org.junit.Test;
+import sample.ByteHelper;
+import sample.DataHelper;
 
 import java.util.Arrays;
 import java.util.Random;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class ByteHelperTest {
   // Initialize a set of random bytes.
-  byte[] randomBytes = new byte[256];
+  final byte[] randomBytes = new byte[256];
 
   @Before
   public void setUp() {

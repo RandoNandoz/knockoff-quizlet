@@ -1,33 +1,34 @@
-package sample;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import sample.Card;
+import sample.ImageHelper;
+import sample.RandomString;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-import javax.imageio.ImageIO;
-
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class CardTest {
   // Need to run the tests on the JavaFX thread because init for Image requires a GUI.
-  @Rule public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
+  @Rule
+  public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
   Card card;
-  String question = RandomString.randomString();
-  String answer = RandomString.randomString();
-  String hint = RandomString.randomString();
+  final String question = RandomString.randomString();
+  final String answer = RandomString.randomString();
+  final String hint = RandomString.randomString();
 
   @Before
   public void setUp() {
     // Create new card with picture.
-    File file = new File("Penguins_collage.png");
+    File file = new File("resources/Penguins_collage.png");
     String uri = file.toURI().toString();
     Image image = new Image(uri);
     card = new Card(question, answer, hint, image);
@@ -37,13 +38,13 @@ public class CardTest {
   public void getImageBytes() throws IOException {
     // Test getImageBytes, to assert that the function works as intended.
     // Test if the image's bytes are equal to the bytes from the func.
-    assertEquals(Arrays.toString(ImageHelper.getImageBytes(card.getImage())), getImageByteStringFromPath("Penguins_collage.png"));
+    assertEquals(Arrays.toString(ImageHelper.getImageBytes(card.getImage())), getImageByteStringFromPath("resources/Penguins_collage.png"));
   }
 
   @Test
   public void toData() throws IOException {
     // The data of the card is equal to our question, answer, hint and image all glued together with commas. Look at the fancy regex!
-    assertEquals(card.toData(), question + "," + answer + "," + hint + "," + getImageByteStringFromPath("Penguins_collage.png"));
+    assertEquals(card.toData(), question + "," + answer + "," + hint + "," + getImageByteStringFromPath("resources/Penguins_collage.png"));
   }
 
   // Our function to get the ByteString from the path.
