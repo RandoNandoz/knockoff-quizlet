@@ -1,5 +1,10 @@
 package sample;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -66,13 +71,46 @@ public class Controller {
       createTextAreaHint.clear();
       createImagePreview.setImage(null);
       image = null;
+      addImageButton.setOpacity(100);
     }
   }
 
-  public void saveCardsToDisk(ActionEvent actionEvent) {
+  public void saveCardsToDisk(ActionEvent actionEvent) throws IOException {
+    // Save the cards to the disk.
+
+    // Let the user chooser the file they want to save to.
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Save your flash cards");
+    fileChooser.getExtensionFilters()
+        .addAll(new FileChooser.ExtensionFilter("Comma Separated Values", "*.csv"), new FileChooser.ExtensionFilter("All Files", "*.*"));
+    File file = fileChooser.showSaveDialog(new Stage());
+
+    // Make a new instance of our IOHelper.
+    IOHelper ioHelper = new IOHelper();
+
+    // Write that collection to file.
+    ioHelper.writeCardCollectionToFile(listQuestions.getItems(), file);
   }
 
-  public void loadCardsFromDisk(ActionEvent actionEvent) {
+  public void loadCardsFromDisk(ActionEvent actionEvent) throws FileNotFoundException {
+    // Get the user to pick their flash card to open.
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open your flash cards");
+    fileChooser.getExtensionFilters()
+        .addAll(new FileChooser.ExtensionFilter("Comma Separated Values", "*.csv"), new FileChooser.ExtensionFilter("All Files", "*.*"));
+    File file = fileChooser.showOpenDialog(new Stage());
+
+    // New IOHelper.
+    IOHelper ioHelper = new IOHelper();
+
+    // This time, read from the selected file.
+    ArrayList<Card> cards = ioHelper.readCardCollectionFromFile(file);
+
+    // Clear the list, and the iterate through the cards to populate the list with all the cards in the returned arraylist.
+    listQuestions.getItems().clear();
+    for (var card : cards) {
+      listQuestions.getItems().add(card);
+    }
   }
 
   public void reviewShuffleReviewCards(ActionEvent actionEvent) {
@@ -127,6 +165,8 @@ public class Controller {
       createAnswerField.setText(card.getAnswer());
       createTextAreaHint.setText(card.getHint());
       createImagePreview.setImage(card.getImage());
+      // Make button invisible so we can see the underlying Image.
+      addImageButton.setOpacity(0);
     }
   }
 

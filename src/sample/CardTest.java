@@ -47,7 +47,7 @@ public class CardTest {
   }
 
   // Our function to get the ByteString from the path.
-  private String getImageByteStringFromPath(String path) throws IOException {
+  private String getImageByteStringFromPath(@SuppressWarnings("SameParameterValue") String path) throws IOException {
     // Get our file from the path param.
     File file = new File(path);
     // Get the StringURI.

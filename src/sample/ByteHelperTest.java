@@ -3,18 +3,17 @@ package sample;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ByteHelperTest {
   // Initialize a set of random bytes.
   byte[] randomBytes = new byte[256];
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     // Fill said set of random bytes with pseudorandom data.
     Random random = new Random();
     random.nextBytes(randomBytes);

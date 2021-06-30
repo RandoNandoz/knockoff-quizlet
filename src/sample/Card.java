@@ -26,7 +26,7 @@ public class Card {
   }
 
   public Card(String question, String answer, String hint, Image image) {
-    // Avec le image.
+    // With the image.
     this.question = question;
     this.answer = answer;
     this.hint = hint;
@@ -47,24 +47,39 @@ public class Card {
       // If there is,, do the same as above, but the String representation of the bytes.
       returnValue = String.format("%s,%s,%s,%s", getQuestion(), getAnswer(), getHint(), DataHelper.normalizeString(Arrays.toString(ImageHelper.getImageBytes(image))));
     }
-
     // Return
     return returnValue;
   }
 
+  public static Card toCard(String data) {
+    // Turns a line of csv into a Card.
+
+    // Our columns are found by splitting the row into columns.
+    var columns = data.split(",");
+
+    // Our fields, since we know 1st column is question, 2nd answer, 3rd hint.
+    String question = columns[0];
+    String answer = columns[1];
+    String hint = columns[2];
+
+    // If our columns are more than three, then there must be an image field.
+    if (columns.length > 3) {
+      // Get the image column.
+      String imageRaw = columns[3];
+      // Decode the string to bytes, then into an image.
+      Image image = ImageHelper.toImage(ByteHelper.toBytesFromString(imageRaw));
+      // Return the card with the image.
+      return new Card(question, answer, hint, image);
+    } else {
+      // Since the column length is less than three, therefore there mustn't be an image.
+      return new Card(question, answer, hint);
+    }
+  }
+
   @Override
   public String toString() {
-    // toString override.
-    // Define a return value.
-    String returnValue;
-    if (image == null) {
-      // If there isn't an image, return just the question, answer, and hint field.
-      returnValue = String.format("Question: %s, Answer: %s, Hint: %s", getQuestion(), getAnswer(), getHint());
-    } else {
-      // If there **is** one, return the image's URL.
-      returnValue = String.format("Question: %s, Answer: %s, Hint: %s, Image: %s", getQuestion(), getAnswer(), getHint(), getImage().getUrl());
-    }
-    return returnValue;
+    // Return fstring with question, answer, and hint.
+    return String.format("Question: %s, Answer: %s, Hint: %s", getQuestion(), getAnswer(), getHint());
   }
 
 

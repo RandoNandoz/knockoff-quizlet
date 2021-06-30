@@ -13,17 +13,26 @@ import javafx.scene.image.Image;
 public class ImageHelper {
   public static boolean imageEqual(Image image1, Image image2) {
     boolean returnValue = false;
-    // If either value is null then they're not equal
-    if (image1 != null || image2 != null) {
+    // If neither the first image nor the second are null, we can proceed with our check.
+    // If either are null, we throw an error and tell the user.
+    if (image1 != null && image2 != null) {
+      // Get the width and height of the two images, and compare them, if they aren't equal, then they obviously are not the same image.
+      // But if they are the same dimensions, we can proceed with checking the alpha and rgb values of the images.
       if (image1.getWidth() == image2.getWidth() && image1.getHeight() == image2.getHeight()) {
+        // First loop through the width (x axis) of the image.
         for (int i = 0; i < image1.getWidth(); i++) {
+          // Then, for each column of the image, we loop through the row.
           for (int j = 0; j < image1.getHeight(); j++) {
+            // We then get the alpha, and rgb values of the pixels at each coordinate, and compare them.
             var image1Value = image1.getPixelReader().getArgb(i, j);
             var image2Value = image2.getPixelReader().getArgb(i, j);
 
+            // If they're equal in value, then we're fine.
             if (image1Value == image2Value) {
               returnValue = true;
-            } else {
+            }
+            // As soon as they aren't through, we know that the images aren't equal, and declare the equality false, and break out of the loop.
+            else {
               returnValue = false;
               break;
             }
