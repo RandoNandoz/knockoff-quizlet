@@ -253,16 +253,20 @@ public class Controller {
     public void syncReviewCreateSides() {
         // Sync the left and right side of the app.
 
-        // Clear the right side list.
-        listQuestionsReview.getItems().clear();
-        // Iterate through the list of questions on the left side, add them to the list on the right.
-        listQuestions.getItems().forEach(card -> listQuestionsReview.getItems().add(card));
-        // Also, set the scoreboard's out-of-value.
-        textScoreFraction.setText("0/" + listQuestionsReview.getItems().size());
-        // Set the scoreboard percent as well.
-        textScorePercent.setText("0%");
-        // Restart the review.
-        startRecordScore();
+        // If the list of questions is empty, we don't sync.
+        if (!listQuestions.getItems().isEmpty()) {
+
+            // Clear the right side list.
+            listQuestionsReview.getItems().clear();
+            // Iterate through the list of questions on the left side, add them to the list on the right.
+            listQuestions.getItems().forEach(card -> listQuestionsReview.getItems().add(card));
+            // Also, set the scoreboard's out-of-value.
+            textScoreFraction.setText("0/" + listQuestionsReview.getItems().size());
+            // Set the scoreboard percent as well.
+            textScorePercent.setText("0%");
+            // Restart the review.
+            startRecordScore();
+        }
     }
 
     public void makeNewEmptyCard() {
