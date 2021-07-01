@@ -1,19 +1,21 @@
 package sample;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
-
 public class ImageHelper {
+  // Hides Java's implicit
+  private ImageHelper() {
+  }
+
   public static boolean imageEqual(Image image1, Image image2) {
-    boolean returnValue = false;
-    // If neither the first image nor the second are null, we can proceed with our check.
+    // If neither the first ima ge nor the second are null, we can proceed with our check.
     // If either are null, we throw an error and tell the user.
     if (image1 != null && image2 != null) {
       // Get the width and height of the two images, and compare them, if they aren't equal, then they obviously are not the same image.
@@ -28,23 +30,17 @@ public class ImageHelper {
             var image2Value = image2.getPixelReader().getArgb(i, j);
 
             // If they're equal in value, then we're fine.
-            if (image1Value == image2Value) {
-              returnValue = true;
-            }
-            // As soon as they aren't through, we know that the images aren't equal, and declare the equality false, and break out of the loop.
-            else {
-              returnValue = false;
-              break;
+            if (image1Value != image2Value) {
+              return false;
             }
           }
         }
-      } else {
-        returnValue = false;
+        return true;
       }
     } else {
       throw new NullPointerException("Image is null!");
     }
-    return returnValue;
+    return false;
   }
 
   // This function turns a byte array of PNG into an FXImage.
@@ -67,7 +63,7 @@ public class ImageHelper {
     BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
     // Now, let's create a byte array output stream.
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    // Using ImageIO.write(), it allows us to to encode the bufferedImage into a PNG bytestream.
+    // Using ImageIO.write(), it allows us to to encode the bufferedImage into a PNG byteArrayOutputStream.
     ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
     // We get call toByteArray(), to turn the image into a byte array!
     return byteArrayOutputStream.toByteArray();

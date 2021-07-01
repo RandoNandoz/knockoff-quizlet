@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import sample.Card;
+import sample.DataHelper;
 import sample.ImageHelper;
 import sample.RandomString;
 
@@ -44,7 +45,7 @@ public class CardTest {
   @Test
   public void toData() throws IOException {
     // The data of the card is equal to our question, answer, hint and image all glued together with commas. Look at the fancy regex!
-    assertEquals(card.toData(), question + "," + answer + "," + hint + "," + getImageByteStringFromPath("resources/Penguins_collage.png"));
+    assertEquals(card.toData(), question + "," + answer + "," + hint + "," + DataHelper.normalizeString(getImageByteStringFromPath("resources/Penguins_collage.png")) + "\n");
   }
 
   // Our function to get the ByteString from the path.

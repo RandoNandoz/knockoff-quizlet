@@ -1,15 +1,16 @@
 package sample;
 
+import javafx.scene.image.Image;
+
 import java.io.IOException;
 import java.util.Arrays;
 
-import javafx.scene.image.Image;
-
 public class Card {
-  private String question;
-  private String answer;
-  private String hint;
+  private final String question;
+  private final String answer;
+  private final String hint;
   private Image image;
+  private boolean done = false;
 
   // Constructors: One for with image and without.
   public Card(String question, String answer, String hint) {
@@ -43,7 +44,7 @@ public class Card {
       // Get the image column.
       String imageRaw = columns[3];
       // Decode the string to bytes, then into an image.
-      Image image = ImageHelper.toImage(ByteHelper.toBytesFromString(imageRaw));
+      var image = ImageHelper.toImage(ByteHelper.toBytesFromString(imageRaw));
       // Return the card with the image.
       return new Card(question, answer, hint, image);
     } else {
@@ -60,11 +61,11 @@ public class Card {
     String returnValue;
     // If there's no image, just return the fields of question, answer & hint, and a blank for the image.
     if (image == null) {
-      returnValue = String.format("%s,%s,%s,", getQuestion(), getAnswer(), getHint());
+      returnValue = String.format("%s,%s,%s%n", getQuestion(), getAnswer(), getHint());
     } else {
       // If there is,, do the same as above, but the String representation of the bytes.
       returnValue = String
-          .format("%s,%s,%s,%s", getQuestion(), getAnswer(), getHint(), DataHelper.normalizeString(Arrays.toString(ImageHelper.getImageBytes(image))));
+              .format("%s,%s,%s,%s%n", getQuestion(), getAnswer(), getHint(), DataHelper.normalizeString(Arrays.toString(ImageHelper.getImageBytes(image))));
     }
     // Return
     return returnValue;
@@ -72,8 +73,8 @@ public class Card {
 
   @Override
   public String toString() {
-    // Return fstring with question, answer, and hint.
-    return String.format("Question: %s, Answer: %s, Hint: %s", getQuestion(), getAnswer(), getHint());
+    // Return fstring with question and hint.
+    return String.format("Question: %s, Hint: %s", getQuestion(), getHint());
   }
 
   // Default getters & setters.
@@ -81,31 +82,23 @@ public class Card {
     return question;
   }
 
-  public void setQuestion(String question) {
-    this.question = question;
-  }
-
   public String getAnswer() {
     return answer;
-  }
-
-  public void setAnswer(String answer) {
-    this.answer = answer;
   }
 
   public String getHint() {
     return hint;
   }
 
-  public void setHint(String hint) {
-    this.hint = hint;
-  }
-
   public Image getImage() {
     return image;
   }
 
-  public void setImage(Image image) {
-    this.image = image;
+  public boolean getDone() {
+    return this.done;
+  }
+
+  public void setDone(boolean done) {
+    this.done = done;
   }
 }
