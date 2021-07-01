@@ -149,7 +149,12 @@ public class Controller {
                 reviewQuestionText.setText("Question: " + selectedQuestion);
                 reviewImageView.setImage(selectedImage);
             } else {
-                // If it is done, then we must disable the check answers button, and show the previous answer.
+                // If it is done, then we must disable the check answers button, and show the questions.
+                // Set question, and image fields.
+                String selectedQuestion = selectedCard.getQuestion();
+                var selectedImage = selectedCard.getImage();
+                reviewQuestionText.setText("Question: " + selectedQuestion);
+                reviewImageView.setImage(selectedImage);
                 checkAnswersButton.setDisable(true);
             }
         } else {
@@ -241,7 +246,7 @@ public class Controller {
             // Disable commit change button.
             commitButton.setDisable(true);
             // Also disable the answer field.
-            reviewAnswerField.setDisable(true);
+            createAnswerField.setDisable(true);
         }
     }
 
@@ -254,6 +259,10 @@ public class Controller {
         listQuestions.getItems().forEach(card -> listQuestionsReview.getItems().add(card));
         // Also, set the scoreboard's out-of-value.
         textScoreFraction.setText("0/" + listQuestionsReview.getItems().size());
+        // Set the scoreboard percent as well.
+        textScorePercent.setText("0%");
+        // Restart the review.
+        startRecordScore();
     }
 
     public void makeNewEmptyCard() {
@@ -299,6 +308,8 @@ public class Controller {
             }
             // Make the card done.
             selectedCard.setDone(true);
+            // Also clear the answer field.
+            reviewAnswerField.setText("");
 
             reviewNextCard();
         }
